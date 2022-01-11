@@ -2,6 +2,7 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
+	"go-blog/internal/middleware"
 	v1 "go-blog/internal/routers/api/v1"
 )
 
@@ -9,6 +10,7 @@ func NewRouter() *gin.Engine {
 	r := gin.New()
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+	r.Use(middleware.Translations())
 
 
 	article := v1.NewArticle()
