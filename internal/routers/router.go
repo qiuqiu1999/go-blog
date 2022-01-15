@@ -2,8 +2,11 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
+	"go-blog/global"
 	"go-blog/internal/middleware"
+	"go-blog/internal/routers/api"
 	v1 "go-blog/internal/routers/api/v1"
+	"net/http"
 )
 
 func NewRouter() *gin.Engine {
@@ -12,10 +15,12 @@ func NewRouter() *gin.Engine {
 	r.Use(gin.Recovery())
 	r.Use(middleware.Translations())
 
+	upload := api.NewUpload()
+	r.POST("/upload/file", upload.UploadFile)
+	r.StaticFS("/static", http.Dir(global.AppSetting.UploadSavePath))
 
 	article := v1.NewArticle()
 	tag := v1.NewTag()
-
 	apiv1 := r.Group("/api/v1")
 	{
 		apiv1.POST("/tags", tag.Create)
@@ -30,6 +35,7 @@ func NewRouter() *gin.Engine {
 		apiv1.PATCH("/articles/:id/state", article.Update)
 		apiv1.GET("/articles/:id", article.Get)
 		apiv1.GET("/articles", article.List)
+
 	}
 
 	return r
