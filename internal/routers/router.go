@@ -15,6 +15,8 @@ func NewRouter() *gin.Engine {
 	r.Use(gin.Recovery())
 	r.Use(middleware.Translations())
 
+	r.POST("/auth", api.GetAuth)
+
 	upload := api.NewUpload()
 	r.POST("/upload/file", upload.UploadFile)
 	r.StaticFS("/static", http.Dir(global.AppSetting.UploadSavePath))
