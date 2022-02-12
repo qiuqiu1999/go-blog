@@ -16,11 +16,12 @@ App:
     - .jpg
     - .jpeg
     - .png
+  DefaultContextTimeout: 60
 Database:
   DBType: mysql
   Username: root  # 填写你的数据库账号
   Password: 123456  # 填写你的数据库密码
-  Host: 192.168.5.170:3306
+  Host: 192.168.1.103:3306
   DBName: blog_service
   TablePrefix: blog_
   Charset: utf8
@@ -31,3 +32,12 @@ JWT:
   Secret: eddycjy
   Issuer: blog-service
   Expire: 7200
+Email:
+  Host: smtp.qq.com
+  Port: 465
+  UserName: xxxxxxx@qq.com
+  Password: xxxxxxxx
+  IsSSL: true
+  From: xxxx@qq.com
+  To:
+    - xxxx@qq.com

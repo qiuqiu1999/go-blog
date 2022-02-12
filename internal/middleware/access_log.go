@@ -2,12 +2,11 @@ package middleware
 
 import (
 	"bytes"
-	"github.com/gin-gonic/gin"
 	"go-blog/global"
-	"go-blog/pkg/app"
-	"go-blog/pkg/errcode"
 	"go-blog/pkg/logger"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type AccessLogWriter struct {
@@ -41,18 +40,5 @@ func AccessLog() gin.HandlerFunc {
 			beginTime,
 			endTime,
 		)
-	}
-}
-
-func Recovery() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		defer func() {
-			if err := recover(); err != nil {
-				global.Logger.WithCallersFrames().Errorf("panic recover err: %v", err)
-				app.NewResponse(c).ToErrorResponse(errcode.ServerError)
-				c.Abort()
-			}
-		}()
-		c.Next()
 	}
 }

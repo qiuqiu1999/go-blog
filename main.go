@@ -1,16 +1,17 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"go-blog/global"
 	"go-blog/internal/model"
 	"go-blog/internal/routers"
 	"go-blog/pkg/logger"
 	"go-blog/pkg/setting"
-	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 func init() {
@@ -62,6 +63,11 @@ func setupSetting() error {
 		return err
 	}
 	err = setting.ReadSection("JWT", &global.JWTSetting)
+	if err != nil {
+		return err
+	}
+
+	err = setting.ReadSection("Email", &global.EmailSetting)
 	if err != nil {
 		return err
 	}
