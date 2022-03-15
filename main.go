@@ -6,6 +6,7 @@ import (
 	"go-blog/internal/routers"
 	"go-blog/pkg/logger"
 	"go-blog/pkg/setting"
+	"go-blog/pkg/tracer"
 	"log"
 	"net/http"
 	"time"
@@ -28,6 +29,11 @@ func init() {
 	err = setupLogger()
 	if err != nil {
 		log.Fatalf("init.setupLogger err: %v", err)
+	}
+
+	err = setTracer()
+	if err != nil {
+		log.Fatalf("init.setTracer err: %v", err)
 	}
 }
 
@@ -96,5 +102,14 @@ func setupLogger() error {
 		LocalTime: true,
 	}, "", log.LstdFlags)
 
+	return nil
+}
+
+func setTracer() error {
+	jeagerTracer, _, err := tracer.NewJaegerTracer("blog-service", "127.0.0.1:6831")
+	if err != nil {
+		return err
+	}
+	global.Tracer = jeagerTracer
 	return nil
 }
