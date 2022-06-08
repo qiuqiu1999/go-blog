@@ -41,15 +41,6 @@ type JWTSettingS struct {
 	Expire time.Duration
 }
 
-func (s *Setting) ReadSection(k string, v interface{}) error {
-	err := s.vp.UnmarshalKey(k, v)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-
 type EmailSettingS struct {
 	Host     string
 	Port     int
@@ -58,4 +49,19 @@ type EmailSettingS struct {
 	IsSSL    bool
 	From     string
 	To       []string
+}
+
+type TracerSettingS struct {
+	Name string
+	Host string
+	Port string
+}
+
+func (s *Setting) ReadSection(k string, v interface{}) error {
+	err := s.vp.UnmarshalKey(k, v)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

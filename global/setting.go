@@ -14,5 +14,6 @@ var (
 
 	EmailSetting *setting.EmailSettingS
 
-	JWTSetting *setting.JWTSettingS
+	JWTSetting    *setting.JWTSettingS
+	TracerSetting *setting.TracerSettingS
 )

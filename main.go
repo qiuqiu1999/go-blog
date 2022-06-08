@@ -103,6 +103,11 @@ func setupSetting() error {
 		return err
 	}
 
+	err = setting.ReadSection("Tracer", &global.TracerSetting)
+	if err != nil {
+		return err
+	}
+
 	global.JWTSetting.Expire *= time.Second
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
@@ -137,7 +142,8 @@ func setupLogger() error {
 }
 
 func setTracer() error {
-	jeagerTracer, _, err := tracer.NewJaegerTracer("blog-service", "127.0.0.1:6831")
+
+	jeagerTracer, _, err := tracer.NewJaegerTracer(global.TracerSetting.Name, global.TracerSetting.Host+":"+global.TracerSetting.Port)
 	if err != nil {
 		return err
 	}
