@@ -2,10 +2,10 @@ package middleware
 
 import (
 	"fmt"
-	"go-blog/global"
-	"go-blog/pkg/app"
-	"go-blog/pkg/email"
-	"go-blog/pkg/errcode"
+	"github.com/qiuqiu1999/go-blog/global"
+	"github.com/qiuqiu1999/go-blog/pkg/app"
+	"github.com/qiuqiu1999/go-blog/pkg/email"
+	"github.com/qiuqiu1999/go-blog/pkg/errcode"
 	"time"
 
 	"github.com/gin-gonic/gin"

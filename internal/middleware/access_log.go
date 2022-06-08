@@ -2,8 +2,8 @@ package middleware
 
 import (
 	"bytes"
-	"go-blog/global"
-	"go-blog/pkg/logger"
+	"github.com/qiuqiu1999/go-blog/global"
+	"github.com/qiuqiu1999/go-blog/pkg/logger"
 	"time"
 
 	"github.com/gin-gonic/gin"

@@ -1,9 +1,9 @@
 package middleware
 
 import (
-	"go-blog/pkg/app"
-	"go-blog/pkg/errcode"
-	"go-blog/pkg/limiter"
+	"github.com/qiuqiu1999/go-blog/pkg/app"
+	"github.com/qiuqiu1999/go-blog/pkg/errcode"
+	"github.com/qiuqiu1999/go-blog/pkg/limiter"
 
 	"github.com/gin-gonic/gin"
 )

@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
+	"github.com/qiuqiu1999/go-blog/global"
 	"github.com/uber/jaeger-client-go"
-	"go-blog/global"
 )
 
 func Tracing() func(c *gin.Context) {

@@ -1,11 +1,11 @@
 package routers
 
 import (
-	"go-blog/global"
-	"go-blog/internal/middleware"
-	"go-blog/internal/routers/api"
-	v1 "go-blog/internal/routers/api/v1"
-	"go-blog/pkg/limiter"
+	"github.com/qiuqiu1999/go-blog/global"
+	"github.com/qiuqiu1999/go-blog/internal/middleware"
+	"github.com/qiuqiu1999/go-blog/internal/routers/api"
+	v1 "github.com/qiuqiu1999/go-blog/internal/routers/api/v1"
+	"github.com/qiuqiu1999/go-blog/pkg/limiter"
 	"net/http"
 	"time"
 

@@ -2,8 +2,8 @@ package app
 
 import (
 	"github.com/dgrijalva/jwt-go"
-	"go-blog/global"
-	"go-blog/pkg/util"
+	"github.com/qiuqiu1999/go-blog/global"
+	"github.com/qiuqiu1999/go-blog/pkg/util"
 	"time"
 )
 

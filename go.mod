@@ -1,4 +1,4 @@
-module go-blog
+module github.com/qiuqiu1999/go-blog
 
 go 1.16
 

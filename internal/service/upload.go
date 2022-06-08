@@ -2,9 +2,10 @@ package service
 
 import (
 	"errors"
-	"go-blog/global"
-	"go-blog/pkg/upload"
-	"go-blog/pkg/util"
+	"github.com/qiuqiu1999/go-blog/global"
+	"github.com/qiuqiu1999/go-blog/pkg/upload"
+	"github.com/qiuqiu1999/go-blog/pkg/util"
+
 	"mime/multipart"
 	"os"
 )

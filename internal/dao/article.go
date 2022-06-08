@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"go-blog/internal/model"
-	"go-blog/pkg/app"
+	"github.com/qiuqiu1999/go-blog/internal/model"
+	"github.com/qiuqiu1999/go-blog/pkg/app"
 )
 
 func (d *Dao) GetArticleList(title string, state uint8, page, pageSize int) ([]*model.Article, error) {

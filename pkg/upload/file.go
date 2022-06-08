@@ -1,8 +1,8 @@
 package upload
 
 import (
-	"go-blog/global"
-	"go-blog/pkg/util"
+	"github.com/qiuqiu1999/go-blog/global"
+	"github.com/qiuqiu1999/go-blog/pkg/util"
 	"io"
 	"io/ioutil"
 	"mime/multipart"

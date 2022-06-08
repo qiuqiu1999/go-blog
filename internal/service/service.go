@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 	otgorm "github.com/eddycjy/opentracing-gorm"
-	"go-blog/global"
-	"go-blog/internal/dao"
+	"github.com/qiuqiu1999/go-blog/global"
+	"github.com/qiuqiu1999/go-blog/internal/dao"
 )
 
 type Service struct {

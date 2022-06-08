@@ -2,12 +2,13 @@ package main
 
 import (
 	"flag"
-	"go-blog/global"
-	"go-blog/internal/model"
-	"go-blog/internal/routers"
-	"go-blog/pkg/logger"
-	"go-blog/pkg/setting"
-	"go-blog/pkg/tracer"
+	"github.com/qiuqiu1999/go-blog/global"
+	"github.com/qiuqiu1999/go-blog/internal/model"
+	"github.com/qiuqiu1999/go-blog/internal/routers"
+	"github.com/qiuqiu1999/go-blog/pkg/logger"
+	"github.com/qiuqiu1999/go-blog/pkg/setting"
+	"github.com/qiuqiu1999/go-blog/pkg/tracer"
+
 	"log"
 	"net/http"
 	"strings"
