@@ -64,7 +64,6 @@ func (t Tag) Create(c *gin.Context) {
 		response.ToErrorResponse(errcode.ErrorCreateTagFail)
 		return
 	}
-
 	response.ToResponse(gin.H{})
 	return
 }

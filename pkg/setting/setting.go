@@ -1,6 +1,8 @@
 package setting
 
 import (
+	"fmt"
+	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )
 
@@ -8,7 +10,17 @@ type Setting struct {
 	vp *viper.Viper
 }
 
-func NewSetting(configs ...string) (*Setting, error){
+func (s *Setting) WatchSettingCharge() {
+	go func() {
+		s.vp.WatchConfig()
+		s.vp.OnConfigChange(func(in fsnotify.Event) {
+			fmt.Println("配置发生改变, 热更中...")
+			_ = s.ReloadAllSection()
+		})
+	}()
+}
+
+func NewSetting(configs ...string) (*Setting, error) {
 	vp := viper.New()
 	vp.SetConfigName("config")
 	for _, config := range configs {
@@ -19,5 +31,7 @@ func NewSetting(configs ...string) (*Setting, error){
 	if err != nil {
 		return nil, err
 	}
-	return &Setting{vp}, nil
+	s := &Setting{vp}
+	s.WatchSettingCharge()
+	return s, nil
 }
