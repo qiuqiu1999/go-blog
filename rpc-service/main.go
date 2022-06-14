@@ -5,7 +5,9 @@ import (
 	"encoding/json"
 	"flag"
 	assetfs "github.com/elazarl/go-bindata-assetfs"
+	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	middleware2 "github.com/qiuqiu1999/go-blog/rpc-service/internal/middleware"
 	"github.com/qiuqiu1999/go-blog/rpc-service/pkg/swagger"
 	pb "github.com/qiuqiu1999/go-blog/rpc-service/proto"
 	"github.com/qiuqiu1999/go-blog/rpc-service/server"
@@ -97,7 +99,16 @@ func runHttpServer() *http.ServeMux {
 }
 
 func runGrpcServer() *grpc.Server {
-	s := grpc.NewServer()
+
+	opts := []grpc.ServerOption{
+		grpc.UnaryInterceptor(grpc_middleware.ChainUnaryServer(
+			middleware2.Recovery,
+			middleware2.AccessLog,
+			middleware2.ErrorLog,
+		)),
+	}
+
+	s := grpc.NewServer(opts...)
 	pb.RegisterTagServiceServer(s, server.NewTagServer())
 	// 注册反射服务
 	reflection.Register(s)

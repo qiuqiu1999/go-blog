@@ -1,6 +1,8 @@
 package model
 
-import "github.com/jinzhu/gorm"
+import (
+	"github.com/jinzhu/gorm"
+)
 
 type Tag struct {
 	*Model
@@ -26,6 +28,7 @@ func (t *Tag) Count(db *gorm.DB) (int, error) {
 }
 
 func (t *Tag) List(db *gorm.DB, pageOffset, pageSize int) ([]*Tag, error) {
+	//time.Sleep(time.Hour)
 	var tags []*Tag
 	var err error
 	if pageOffset >= 0 && pageSize > 0 {
